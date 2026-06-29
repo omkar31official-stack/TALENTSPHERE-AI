@@ -194,7 +194,7 @@ Results are **sorted by overallScore descending**.
 - Risk factors aggregated across all candidates
 - Recruiter notes: count, shortlist count, average score, top score
 
-#### `generateDemoData() → { jd, redfgsufmes }`xd
+#### `generateDemoData()trfg → { jd, redfgsufmes }`xd
 - Returns a pre-built JD for "Senior Full-Stack Engineer" with 10 skills
 - Returns 5 demo candidates: Sarah Chen, Marcus Johnson, Elena Rodriguez, James Park, Aisha Patel
 - Each has realistic skills, experience (3-7 years), education, certifications, projects, leadership
