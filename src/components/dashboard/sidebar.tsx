@@ -17,6 +17,8 @@ import {
   Download,
   Sun,
   Moon,
+  Hexagon,
+  Command,
   Sparkles,
   Menu,
   X,
@@ -56,31 +58,32 @@ function SidebarContent({ onNavigate }: { onNavigate: () => void }) {
 
   const sections: { label: string; items: typeof navItems }[] = [];
   let currentItems: typeof navItems = [];
+  let currentLabel = sectionBreak[navItems[0].href] || '';
 
   for (const item of navItems) {
     if (sectionBreak[item.href] && currentItems.length > 0) {
-      sections.push({ label: sectionBreak[item.href] || '', items: currentItems });
+      sections.push({ label: currentLabel, items: currentItems });
       currentItems = [];
+      currentLabel = sectionBreak[item.href];
     }
     currentItems.push(item);
   }
   if (currentItems.length > 0) {
-    sections.push({ label: sectionBreak[currentItems[0].href] || '', items: currentItems });
+    sections.push({ label: currentLabel, items: currentItems });
   }
 
   return (
     <div className="flex flex-col h-full">
       <div className="p-5 pb-4">
         <div className="flex items-center gap-3">
-          <div className="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-violet-500 via-purple-500 to-cyan-400 flex items-center justify-center shrink-0">
-            <Sparkles className="w-5 h-5 text-white" />
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500 via-purple-500 to-cyan-400 blur-xl opacity-40" />
+          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shrink-0 shadow-sm">
+            <Command className="w-5 h-5 text-black" />
           </div>
           <div className="min-w-0">
-            <h1 className="font-bold text-sm tracking-[0.15em] bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              TALENTSPHERE
+            <h1 className="font-semibold text-sm tracking-wide text-white">
+              TalentSphere
             </h1>
-            <p className="text-[9px] tracking-[0.25em] text-violet-400/70 uppercase">AI Platform</p>
+            <p className="text-[10px] tracking-widest text-gray-500 uppercase font-medium mt-0.5">Enterprise</p>
           </div>
         </div>
       </div>
@@ -88,7 +91,7 @@ function SidebarContent({ onNavigate }: { onNavigate: () => void }) {
       <nav className="flex-1 px-3 space-y-4 overflow-y-auto scrollbar-thin">
         {sections.map((section) => (
           <div key={section.label}>
-            <p className="px-3 mb-1.5 text-[9px] font-semibold tracking-[0.2em] text-gray-500 uppercase">
+            <p className="px-3 mb-2 mt-4 text-[11px] font-semibold tracking-wider text-gray-500 uppercase">
               {section.label}
             </p>
             <div className="space-y-0.5">
@@ -101,21 +104,15 @@ function SidebarContent({ onNavigate }: { onNavigate: () => void }) {
                     href={item.href}
                     onClick={handleNavClick}
                     className={cn(
-                      'group flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 relative',
+                      'group flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
                       isActive
-                        ? 'text-white'
-                        : 'text-gray-500 hover:text-gray-200 hover:bg-white/[0.04]'
+                        ? 'bg-white/10 text-white shadow-sm'
+                        : 'text-gray-400 hover:text-gray-100 hover:bg-white/5'
                     )}
                   >
-                    {isActive && (
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-violet-500/15 via-purple-500/10 to-cyan-500/10 border border-violet-500/20" />
-                    )}
-                    {isActive && (
-                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-r-full bg-gradient-to-b from-violet-400 to-cyan-400" />
-                    )}
-                    <item.icon className={cn('w-4 h-4 relative z-10 shrink-0', isActive ? 'text-violet-400' : 'text-gray-600 group-hover:text-gray-400')} />
-                    <span className="relative z-10 truncate">{item.label}</span>
-                    {isActive && <ChevronRight className="w-3 h-3 ml-auto text-violet-400/50 relative z-10" />}
+                    <item.icon className={cn('w-[18px] h-[18px] shrink-0 transition-colors', isActive ? 'text-white' : 'text-gray-500 group-hover:text-gray-300')} />
+                    <span className="truncate">{item.label}</span>
+                    {isActive && <ChevronRight className="w-[14px] h-[14px] ml-auto text-gray-400" />}
                   </Link>
                 );
               })}
@@ -155,16 +152,18 @@ export function Sidebar() {
   return (
     <>
       {/* Mobile toggle */}
-      <button
-        className="fixed top-4 left-4 z-[60] p-2.5 rounded-xl border border-white/10 bg-black/60 backdrop-blur-xl lg:hidden hover:bg-white/10 transition-colors"
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        aria-label="Toggle sidebar"
-      >
-        {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-      </button>
+      {!sidebarOpen && (
+        <button
+          className="fixed top-4 left-4 z-[60] p-2 rounded-lg border border-white/10 bg-black/80 backdrop-blur-xl lg:hidden hover:bg-white/10 transition-colors"
+          onClick={() => setSidebarOpen(true)}
+          aria-label="Open sidebar"
+        >
+          <Menu className="w-5 h-5 text-white" />
+        </button>
+      )}
 
       {/* Desktop: always-visible sidebar */}
-      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[260px] z-40 flex-col border-r border-white/[0.06] bg-[#080810]/90 backdrop-blur-2xl">
+      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-[260px] z-40 flex-col border-r border-white/[0.04] bg-[#09090b] backdrop-blur-2xl">
         <SidebarContent onNavigate={() => {}} />
       </aside>
 
@@ -196,7 +195,7 @@ function MobileSidebar({ open, onClose }: { open: boolean; onClose: () => void }
       )}
       <aside
         className={cn(
-          'fixed left-0 top-0 bottom-0 w-[260px] z-[55] border-r border-white/[0.06] bg-[#080810]/95 backdrop-blur-2xl flex flex-col transition-transform duration-300 ease-out lg:hidden',
+          'fixed left-0 top-0 bottom-0 w-[260px] z-[55] border-r border-white/[0.04] bg-[#09090b] shadow-2xl flex flex-col transition-transform duration-300 ease-out lg:hidden',
           open ? 'translate-x-0' : '-translate-x-full'
         )}
       >

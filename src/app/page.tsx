@@ -11,10 +11,7 @@ const IntroAnimation = dynamic(
   { ssr: false }
 );
 
-const MatrixRain = dynamic(
-  () => import('@/components/shared/matrix-rain').then((m) => m.MatrixRain),
-  { ssr: false }
-);
+
 
 export default function Home() {
   const [introComplete, setIntroComplete] = useState(false);
@@ -23,7 +20,6 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-background">
       {!introComplete && <IntroAnimation onComplete={handleIntroComplete} />}
-      <MatrixRain />
       <ParticlesBg />
       <HeroSection />
       <FeaturesSection />

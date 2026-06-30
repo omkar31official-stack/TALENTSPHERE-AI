@@ -4,10 +4,7 @@ import { Sidebar } from '@/components/dashboard/sidebar';
 import { ParticlesBg } from '@/components/shared/particles-bg';
 import dynamic from 'next/dynamic';
 
-const MatrixRain = dynamic(
-  () => import('@/components/shared/matrix-rain').then((m) => m.MatrixRain),
-  { ssr: false }
-);
+
 
 export default function DashboardLayout({
   children,
@@ -16,7 +13,6 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="min-h-screen bg-background">
-      <MatrixRain />
       <ParticlesBg />
       <Sidebar />
       <main className="lg:ml-[260px] relative z-10 min-h-screen">

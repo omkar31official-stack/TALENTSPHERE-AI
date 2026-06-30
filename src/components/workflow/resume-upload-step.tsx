@@ -31,18 +31,31 @@ export function ResumeUploadStep() {
   const processFiles = useCallback(async (files: FileList) => {
     setParsing(true);
     setError(null);
-    const validExts = ['pdf', 'docx', 'txt'];
+    const validExts = ['pdf', 'docx', 'txt', 'rtf', 'md', 'doc', 'json'];
+    const validMimes = [
+      'application/pdf',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'application/msword',
+      'text/plain',
+      'text/markdown',
+      'application/rtf',
+      'application/json'
+    ];
 
     for (const file of Array.from(files)) {
-      const ext = file.name.split('.').pop()?.toLowerCase();
-      if (!ext || !validExts.includes(ext)) {
+      const name = file.name.trim();
+      const ext = name.split('.').pop()?.toLowerCase() || '';
+      const mime = file.type?.toLowerCase() || '';
+      
+      const isValid = validExts.includes(ext) || validMimes.includes(mime) || mime.startsWith('text/');
+      if (!isValid) {
         setError(`Skipped "${file.name}" — unsupported format. Use PDF, DOCX, or TXT.`);
         continue;
       }
       try {
         const resume = await parseResumeFile(file);
         addResume(resume);
-      } catch {
+      } catch (err) {
         setError(`Failed to parse "${file.name}". Make sure the file is valid.`);
       }
     }
@@ -91,7 +104,7 @@ export function ResumeUploadStep() {
         <input
           ref={fileInputRef}
           type="file"
-          accept=".pdf,.docx,.txt"
+          accept=".pdf,.docx,.txt,.doc,.rtf,.md,.json,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,text/plain,text/markdown,application/rtf,application/json"
           multiple
           onChange={handleFileSelect}
           className="hidden"
