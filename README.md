@@ -14,7 +14,7 @@ AI-powered recruiting platform for discovering, ranking, and analyzing talent wi
 - **Export System** — CSV, XLSX, JSON, and PDF report generation
 - **File Upload** — Parse PDF, DOCX, and TXT resumes in-browser
 
-## Tech Stack
+## Tech Stackddd
 
 - **Framework**: Next.js 16 (App Router)
 - **UI**: Tailwind CSS 4, Framer Motion, shadcn/ui (Base UI)
