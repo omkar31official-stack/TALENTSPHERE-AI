@@ -16,7 +16,7 @@ AI-powered recruiting platform for discovering, ranking, and analyzing talent wi
 
 ## Tech Stackddd
 
-- **Framework**: Next.js 16 (App Router)
+- **Framework**: Next.js 16 (App Router)bsha
 - **UI**: Tailwind CSS 4, Framer Motion, shadcn/ui (Base UI)
 - **3D**: React Three Fiber, Three.js
 - **Charts**: Recharts
