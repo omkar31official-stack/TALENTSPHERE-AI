@@ -2,7 +2,7 @@
 
 ## What This Project Isggg
 
-TalentSphere AI is an **AI-powered recruiting platform** for discovering, ranking, and analyzing job candidates. It is a **client-side-only** Next.js application (no backend, no database, no API routes). All AI analysis, scoring, and processing happens in the browser. It is deployed on Vercel.
+TalentSphere AI is an **AI-powered recruiting platform** for discovering, ranking, and analyzing job candidates. It is a **client-side-only** Next.js application (no backend, no database, no API routes). All AI analysis, scoring, and processing happens in the browser. It is deployed on Vercel.with github 
 
 **Repository root:** `/media/omkar/Storage/Projects/TALENTSPHERE AI`
 **Deployment:** Vercel (project ID: `prj_VhjuTb2azlTtQj8cB2gPcW9NDvDB`, name: `talentsphere-ai`)
