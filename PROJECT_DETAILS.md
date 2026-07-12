@@ -16,7 +16,7 @@ TalentSphere AI is an **AI-powered recruiting platform** for discovering, rankin
 2. **User uploads candidate resumes** (PDF, DOCX, TXT — parsed entirely in the browser) OR loads 5 built-in demo candidates
 3. **AI matching engine runs client-side** and produces:
    - Weighted overall scores (0–100) for each candidate
-   - Skill match, experience match, education match, certification match, semantic similarity scores
+   - Skill match, experience match, education match, certification match, semanhhhtic similarity scores
    - Strengths, weaknesses, missing skills, risk factors, interview readiness, hiring confidence, leadership score, team fit score
    - Explainable "why selected" / "why rejected" reasons
 4. **Bias detection** analyzes fairness across education groups, experience levels, and score distribution
