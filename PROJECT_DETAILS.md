@@ -7,7 +7,7 @@ TalentSphere AI is an **AI-powered recruiting platform** for discovering, rankin
 **Repository root:** `/media/omkar/Storage/Projects/TALENTSPHERE AI`
 **Deployment:** Vercel (project ID: `prj_VhjuTb2azlTtQj8cB2gPcW9NDvDB`, name: `talentsphere-ai`)
 **Live URL pattern:** `https://talentsphere-ai.vercel.app`
-
+gggg
 ---
 
 ## What It Does (End-to-End Flow)yy
