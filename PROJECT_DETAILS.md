@@ -10,7 +10,7 @@ TalentSphere AI is an **AI-powered recruiting platform** for discovering, rankin
 gggg
 ---
 
-## What It Does (End-to-End Flow)yy
+## What It Does (End-to-End Flow)yyhh
 
 1. **User pastes a Job Description** gg(or loads a built-in demo JD for "Senior Full-Stack Engineer")
 2. **User uploads candidate resumes** (PDF, DOCX, TXT — parsed entirely in the browser) OR loads 5 built-in demo candidates
